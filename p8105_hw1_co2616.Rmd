@@ -1,5 +1,38 @@
 ---
 title: "p8105_hw1_co2616"
-output: github_document
+author: Chelsey Oppan
 date: "2025-09-13"
+output: github_document
 ---
+
+# Problem 1
+
+loading the moderndive and tidyverse libraries to complete problem 1
+```{r}
+library(moderndive)
+library(tidyverse)
+```
+
+loading the early_january_weather dataset
+```{r}
+data("early_january_weather")
+```
+
+```{r}
+help("early_january_weather")
+```
+
+The early_january_weather data set has 15 variables. The variable names are origin, year, month, day, hour, temp, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, visib, and time_hour. Temperature and dewpoint is meausre in F. Wind direction is measure in degrees and speed and and gust speed are measure in mph. Precipitation is measure in inches. Pressure is measure in millibars. Visibility is measure in miles.
+
+This size of the dataset is `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns.
+
+The mean temperature of the dataset is `r mean(pull(early_january_weather, temp))`
+
+```{r}
+ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) + geom_point()
+
+ggsave("/Users/chelsopp/Documents/MPH/Data Science I/p8105_hw1_co2616/temp vs time scatterplot.png")
+```
+
+Looking at the scatterplot, temperature seems to increase as time increases. Also, humidity seems to increase as temperature and time increases.
+
